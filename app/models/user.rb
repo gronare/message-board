@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   before_save :downcase_email
 
+  has_many :posts
+
   validates_presence_of :email
   validates_uniqueness_of :email, case_sensitive: false
   validates_presence_of :name
