@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_context, except: :index
 
   def index
-    render json: Post.all, status: :success
+    render json: Post.all, status: :ok
   end
 
   def create
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = PostsService.update_post(@context, post_params)
 
     if @post.success?
-      render json: @post.result, status: :updated
+      render json: @post.result, status: :ok
     else
       render json: { errors: @post.errors }, status: :unauthorized
     end
